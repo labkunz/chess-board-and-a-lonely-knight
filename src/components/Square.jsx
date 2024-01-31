@@ -1,5 +1,7 @@
 import React from "react";
 
+//格子區塊元件
+
 export default function Square({ black, children }) {
     const fill = black ? "black" : "white";
     const stroke = black ? "white" : "black";

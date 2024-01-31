@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Knight from './components/Knight'
-import Square from './components/Square'
+import Board from './components/Board'
+
+import "./basic.css" 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Square black>
-    <Knight />
-  </Square>
+  <Board knightPosition={[0, 0]} />
 )
