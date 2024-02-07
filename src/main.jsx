@@ -11,8 +11,14 @@ import "./basic.css"
 //   <Board knightPosition={[7, 4]} />
 // )
 
-observe((knightPosition) => 
-  ReactDOM.createRoot(document.getElementById('root')).render(
-    <Board knightPosition={knightPosition} />
-  )
-)
+// const root = document.getElementById('root');
+
+// observe((knightPosition) => 
+//   ReactDOM.createRoot(document.getElementById('root')).render(
+//     <Board knightPosition={knightPosition} />
+//   )
+// )
+
+const domRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+observe((knightPosition) => domRoot.render(<Board knightPosition={knightPosition} />))

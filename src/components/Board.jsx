@@ -22,7 +22,7 @@ function renderSquare(i, knightPosition) {
     const piece = isKnightHere ? <Knight /> : null;
 
     return (
-        <DndProvider backend={HTML5Backend}>
+        <DndProvider key={i} backend={HTML5Backend}>
             <div key={i} style={{ width: "12.5%", height: "12.5%" }} 
                 onClick={() => handleSquareClick(x, y)}
             >
