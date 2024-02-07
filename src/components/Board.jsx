@@ -14,7 +14,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 //用此func來管理整面棋盤
 //原本的[knightX, knightY]改為Game來管理
 function renderSquare(i, knightPosition) {
-    const [knightX, knightY] = knightPosition;
+    const [knightX, knightY] = knightPosition;  //解構出來即可
     const x = i % 8;
     const y = Math.floor(i / 8);
     const black = (x + y) % 2 === 1;
@@ -22,14 +22,13 @@ function renderSquare(i, knightPosition) {
     const piece = isKnightHere ? <Knight /> : null;
 
     return (
-        <div key={i} style={{ width: "12.5%", height: "12.5%" }} 
+        <DndProvider backend={HTML5Backend}>
+            <div key={i} style={{ width: "12.5%", height: "12.5%" }} 
                 onClick={() => handleSquareClick(x, y)}
             >
                 <Square black={black}>{piece}</Square>
             </div>
-        // <DndProvider backend={HTML5Backend}>
-            
-        // </DndProvider>
+        </DndProvider>
     );
 }
 
