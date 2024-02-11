@@ -1,9 +1,8 @@
 import React from "react";
-import Square from "./Square";
+// import Square from "./Square";
 import Knight from "./Knight";
 
-//把移動騎士方法放在棋盤上
-import { moveKnight, canMoveKnight } from "./Game";
+// import { moveKnight, canMoveKnight } from "./Game";
 
 //引入React dnd
 import { DndProvider } from "react-dnd";
@@ -22,9 +21,7 @@ function renderSquare(i, knightPosition) {
 
     return (
         <DndProvider key={i} backend={HTML5Backend}>
-            <div key={i} style={{ width: "12.5%", height: "12.5%" }} 
-                onClick={() => handleSquareClick(x, y)}
-            >
+            <div key={i} style={{ width: "12.5%", height: "12.5%" }} >
                 <BoardSquare x={x} y={y}>
                     {renderPiece(x, y, knightPosition)}
                 </BoardSquare>
@@ -40,11 +37,11 @@ function renderPiece(x, y, [knightX, knightY]) {
     }
 }
 
-function handleSquareClick(toX, toY) {
-    if (canMoveKnight(toX, toY)) {
-        moveKnight(toX, toY);
-    }
-}
+// function handleSquareClick(toX, toY) {
+//     if (canMoveKnight(toX, toY)) {
+//         moveKnight(toX, toY);
+//     }
+// }
 
 export default function Board({ knightPosition }) {
     const squares = [];
