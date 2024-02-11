@@ -9,27 +9,35 @@ import { moveKnight, canMoveKnight } from "./Game";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+//加入包裝後元件
+import BoardSquare from "./BoardSquare";
+
 //棋盤元件
 
 //用此func來管理整面棋盤
 //原本的[knightX, knightY]改為Game來管理
 function renderSquare(i, knightPosition) {
-    const [knightX, knightY] = knightPosition;  //解構出來即可
     const x = i % 8;
     const y = Math.floor(i / 8);
-    const black = (x + y) % 2 === 1;
-    const isKnightHere = knightX === x && knightY === y;  //這裡怎麼改？
-    const piece = isKnightHere ? <Knight /> : null;
 
     return (
         <DndProvider key={i} backend={HTML5Backend}>
             <div key={i} style={{ width: "12.5%", height: "12.5%" }} 
                 onClick={() => handleSquareClick(x, y)}
             >
-                <Square black={black}>{piece}</Square>
+                <BoardSquare x={x} y={y}>
+                    {renderPiece(x, y, knightPosition)}
+                </BoardSquare>
             </div>
         </DndProvider>
     );
+}
+
+//把renderSquare的部分功能拆分至此
+function renderPiece(x, y, [knightX, knightY]) {
+    if (x === knightX && y === knightY) {
+        return <Knight />
+    }
 }
 
 function handleSquareClick(toX, toY) {
